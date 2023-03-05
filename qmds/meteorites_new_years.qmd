@@ -1,7 +1,7 @@
 ---
 title: "Learning to use f-strings and data frames in Quarto"
 author: "Abigail Haddad"
-date: "March 03, 2023"
+date: "March 05, 2023"
 ---
 
 ## My Specific Use Case Involves F-Strings, DataFrames, and Graphs/Figures
@@ -45,8 +45,8 @@ plt.show()
 ```{python}
 #| echo: false
 from IPython.display import display, Markdown
-first_meteor_year=1995
-last_meteor_year=2000
+first_meteor_year=2000
+last_meteor_year=2023
 number_of_meteors=len(data.loc[(data['year']>=first_meteor_year) &(data['year']<=last_meteor_year) ])
 
 display(Markdown(

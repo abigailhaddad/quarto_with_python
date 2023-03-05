@@ -27,7 +27,7 @@ def replaceThingsInYourQMD(qmd_folder, qmd_file, replacement_dictionary, new_qmd
     with open(new_qmd_file, 'w') as file:
       file.write(filedata)
       
-qmd_folder=r"C:\Users\abiga\OneDrive\Documents\Python Scripts\quarto demo\qmds"
+qmd_folder=r"C:\Users\abiga\OneDrive\Documents\PythonScripts\quartodemo\qmds"
 qmd_file="meteorites.qmd"
 new_qmd_file="meteorites_new_years.qmd"
     
