@@ -1,0 +1,56 @@
+---
+title: "Learning to use f-strings and data frames in Quarto"
+author: "Abigail Haddad"
+date: "March 03, 2023"
+---
+
+## My Specific Use Case Involves F-Strings, DataFrames, and Graphs/Figures
+
+[Python Data Frames](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) 
+are a core data structure for working in (**Python**)
+
+[F-strings](https://realpython.com/python-f-strings/) are a way to put variables/code results in your strings
+
+Some libraries you might want to use for making charts in Python include:
+
+- Matplotlib
+- Seaborne
+- Plotly
+
+## This is a Pandas DataFrame about meteorite landings. These are the earliest five in our data set.
+
+```{python}
+#| echo: false
+import pandas as pd
+data = pd.read_csv('https://data.nasa.gov/api/views/gh4g-9sfh/rows.csv?accessType=DOWNLOAD') 
+data[['id', 'nametype', 'mass (g)', 'year']].sort_values('year').head()
+```
+
+## This is a scatterplot.
+
+```{python}
+#| echo: false
+import plotly.express
+data['Count']=1
+counts=data.groupby(['year']).count()[['Count']].reset_index().sort_values('year')
+plotly.express.scatter(
+    counts,
+    x='year',
+    y='Count')
+```
+
+## This is an f-string
+
+```{python}
+#| echo: false
+from IPython.display import display, Markdown
+first_meteor_year=1995
+last_meteor_year=2000
+number_of_meteors=len(data.loc[(data['year']>=first_meteor_year) &(data['year']<=last_meteor_year) ])
+
+display(Markdown(
+f"""
+According to our data, the number of meteors between {first_meteor_year} and {last_meteor_year} is {number_of_meteors}.
+"""
+))
+```
